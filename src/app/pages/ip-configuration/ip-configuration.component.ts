@@ -17,6 +17,7 @@ export class IpConfigurationComponent implements OnInit {
 
     private ipLimit = ALLOWED_IPS;
     configForm: FormGroup;
+    originalData: IpConfigurationModel[] = [];
     constructor(private fb: FormBuilder, private userService: UserService) { }
 
     ngOnInit() {
@@ -71,6 +72,7 @@ export class IpConfigurationComponent implements OnInit {
           this.ipList.removeAt(index);
         } else {
           this.initializeForm();
+          this.configForm.get('ipList').markAsDirty();
         }
     }
 
@@ -80,12 +82,15 @@ export class IpConfigurationComponent implements OnInit {
     saveIpAddress(): void {
         if (this.canSave()) {
             this.userService.saveIpAddresses(this.configForm.get('ipList').value);
+            this.originalData = this.configForm.get('ipList').value;
             this.configForm.get('ipList').markAsPristine();
         }
     }
 
     canSave(): boolean {
-        return (this.configForm.get('ipList').dirty && this.configForm.get('ipList').valid);
+        return ((this.originalData.length !== this.configForm.get('ipList').value.length
+          || this.configForm.get('ipList').dirty)
+          && this.configForm.get('ipList').valid);
     }
 
     /**
@@ -95,11 +100,10 @@ export class IpConfigurationComponent implements OnInit {
 
         const self = this;
         const data = localStorage.getItem(LocalStorageKeys.IP_ADDRESSES);
-        let storedIPAddr: IpConfigurationModel[];
         if (data !== null) {
-          storedIPAddr = JSON.parse(data);
+          this.originalData = JSON.parse(data);
           self.ipList.clear();
-          storedIPAddr.forEach((res) => {
+          this.originalData.forEach((res) => {
               const ipValueFb = self.ipValueFormGroup(res.ipValue);
               self.ipList.push(ipValueFb);
           });

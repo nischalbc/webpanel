@@ -31,7 +31,11 @@ export class UserService {
     saveIpAddresses(data: IpConfigurationModel[]): void {
 
         const ipList: IpConfigurationModel[] = data.filter(item => item.ipValue !== '');
-        const ipListString: string = JSON.stringify(ipList);
-        localStorage.setItem(LocalStorageKeys.IP_ADDRESSES, ipListString);
+        if (ipList.length > 0) {
+            const ipListString: string = JSON.stringify(ipList);
+            localStorage.setItem(LocalStorageKeys.IP_ADDRESSES, ipListString);
+        } else {
+            localStorage.removeItem(LocalStorageKeys.IP_ADDRESSES);
+        }
     }
 }

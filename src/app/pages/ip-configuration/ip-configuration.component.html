@@ -4,7 +4,7 @@
 
             <form [formGroup]="configForm">
                 <div class="row" formArrayName="ipList">
-                      <div class="col-md-8"
+                      <div class="col-md-6"
                            *ngFor="let item of ipList.controls; let i=index" [formGroupName]="i">
 
                             <div class="row">
@@ -16,7 +16,7 @@
                                     <span [hidden]="item.valid" class="error-msg">please enter valid address eg: 255.255.255.255</span>
                                   </div>
                                 </div>
-                                <div class="col-md-1">
+                                <div class="col-md-3">
                                   <button class="btn" (click)="removeIpAddress(i)">del</button>
                                 </div>
                             </div>
@@ -32,7 +32,6 @@
         </div>
 
         <div class="col-md-7">
-          {{configForm.get('ipList').dirty}}
             <button class="btn btn-sm btn-primary"
                     (click)="saveIpAddress()"
                     [disabled]="!canSave()">Save</button>
