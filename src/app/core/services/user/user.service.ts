@@ -6,13 +6,23 @@ import {UserTypeModel} from '../../../models/user-type.model';
 })
 export class UserService {
 
-    constructor() { }
+    private userTypes: UserTypeModel[] = [];
+    constructor() {
 
-    getUserTypes(): UserTypeModel[] {
-        return [
-            new UserTypeModel({label: 'Basic', value: 'basic', allowedIps: 5}),
-            new UserTypeModel({label: 'Premium', value: 'premium', allowedIps: 10})
+        this.userTypes = [
+          new UserTypeModel({label: 'Basic', value: 'basic', allowedIps: 5}),
+          new UserTypeModel({label: 'Premium', value: 'premium', allowedIps: 10})
         ];
     }
 
+    getUserTypes(): UserTypeModel[] {
+        return this.userTypes;
+    }
+
+    getAllowedIPs(type: string): UserTypeModel {
+        const userTypeObject = this.userTypes.find((userType) => userType.value === type);
+        if (userTypeObject !== undefined) {
+          return userTypeObject;
+        }
+    }
 }
