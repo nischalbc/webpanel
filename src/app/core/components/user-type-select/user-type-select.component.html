@@ -1,0 +1,13 @@
+
+<div class="d-flex flex-row">
+
+    <form [formGroup]="userTypeForm">
+        <label>Select the Type of User</label>
+        <select class="form-control" formControlName="userTypeControl" (change)="onTypeSelect($event)">
+            <option *ngFor="let userType of userTypes" [value]="userType.value">
+                {{userType.label}}
+            </option>
+        </select>
+    </form>
+
+</div>

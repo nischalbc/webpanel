@@ -6,17 +6,21 @@ import {RouterModule} from '@angular/router';
 import { IpConfigurationComponent } from './pages/ip-configuration/ip-configuration.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import {AppRoutingModule} from './app-routing.module';
+import { UserTypeSelectComponent } from './core/components/user-type-select/user-type-select.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
     declarations: [
         AppComponent,
         IpConfigurationComponent,
-        LandingComponent
+        LandingComponent,
+        UserTypeSelectComponent
     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
     providers: [],
     bootstrap: [AppComponent]

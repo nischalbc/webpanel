@@ -1,1 +1,21 @@
-<p>landing works!</p>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row col-md-12  justify-content-center">
+              <user-type-select (selectedUserType)="onUsertypeSelect($event)"></user-type-select>
+            </div>
+            <div class="row col-md-12  justify-content-center">
+              <span *ngIf="showError" style="color: red; font-size: 11px;">Please select a type.</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row col-md-12 mt-3 pt-2 justify-content-center">
+                <button type="button" class="btn btn-success" (click)="submit()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+

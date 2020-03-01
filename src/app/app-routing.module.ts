@@ -4,20 +4,21 @@ import {RouterModule, Routes} from '@angular/router';
 import {LandingComponent} from './pages/landing/landing.component';
 import {IpConfigurationComponent} from './pages/ip-configuration/ip-configuration.component';
 import {FeatureGuard} from './core/guards/feature.guard';
+import {InAppRoutes} from './core/app-constants';
 
 const routes: Routes = [
     {
-        path: 'landing',
+        path: InAppRoutes.LANDING,
         component: LandingComponent
     }, {
-        path: 'config',
+        path: InAppRoutes.CONFIG,
         canActivate: [FeatureGuard],
         component: IpConfigurationComponent
     },
 
 
-    {path: '', redirectTo: 'landing', pathMatch: 'full'},
-    {path: '**', redirectTo: 'landing', pathMatch: 'full'}
+    {path: '', redirectTo: InAppRoutes.LANDING, pathMatch: 'full'},
+    {path: '**', redirectTo: InAppRoutes.LANDING, pathMatch: 'full'}
 ];
 
 @NgModule({

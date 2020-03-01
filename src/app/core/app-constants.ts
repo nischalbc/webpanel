@@ -1,5 +1,4 @@
 
-
 export enum LocalStorageKeys {
     USER_TYPE = 'usertype'
 }
