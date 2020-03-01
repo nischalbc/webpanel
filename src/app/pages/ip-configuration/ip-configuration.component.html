@@ -4,27 +4,35 @@
 
             <form [formGroup]="configForm">
                 <div class="row" formArrayName="ipList">
-                      <div class="col-md-6"
+                      <div class="col-md-7"
                            *ngFor="let item of ipList.controls; let i=index" [formGroupName]="i">
 
                             <div class="row">
                                 <div class="col-md-7 py-2">
                                   <div>
-                                    <input formControlName="ipValue" />
+                                    <input formControlName="ipValue" class="form-control" />
                                   </div>
                                   <div>
                                     <span [hidden]="item.valid" class="error-msg">please enter valid address eg: 255.255.255.255</span>
                                   </div>
                                 </div>
-                                <div class="col-md-3">
-                                  <button class="btn" (click)="removeIpAddress(i)">del</button>
+                                <div class="col-md-3 py-2">
+                                  <button class="btn btn-sm btn-danger" (click)="removeIpAddress(i)">
+                                    <i class="material-icons">
+                                      remove
+                                    </i>
+                                  </button>
                                 </div>
                             </div>
 
                       </div>
 
-                      <div class="col-md-1 add-ip-cls">
-                          <button class="btn" (click)="addIpAddress()">Add</button>
+                      <div class="col-md-1 add-ip-cls py-2">
+                          <button class="btn btn-sm btn-primary" (click)="addIpAddress()">
+                            <i class="material-icons">
+                              add
+                            </i>
+                          </button>
                       </div>
 
                 </div>
@@ -32,7 +40,7 @@
         </div>
 
         <div class="col-md-7">
-            <button class="btn btn-sm btn-primary"
+            <button class="btn btn-sm btn-success"
                     (click)="saveIpAddress()"
                     [disabled]="!canSave()">Save</button>
         </div>
