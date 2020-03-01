@@ -1,3 +1,4 @@
+
 export class IpConfigurationModel {
-  a: string;
+  ipValue: string;
 }

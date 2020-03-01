@@ -1,26 +1,43 @@
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-7">
 
             <form [formGroup]="configForm">
-              <div formArrayName="ip_list">
-                <div *ngFor="let item of ipList.controls; let i=index" [formGroupName]="i">
-                  <label>
-                    <input formControlName="ipValue" />
-                  </label>
+                <div class="row" formArrayName="ipList">
+                      <div class="col-md-8"
+                           *ngFor="let item of ipList.controls; let i=index" [formGroupName]="i">
+
+                            <div class="row">
+                                <div class="col-md-7 py-2">
+                                  <div>
+                                    <input formControlName="ipValue" />
+                                  </div>
+                                  <div>
+                                    <span [hidden]="item.valid" class="error-msg">please enter valid address eg: 255.255.255.255</span>
+                                  </div>
+                                </div>
+                                <div class="col-md-1">
+                                  <button class="btn" (click)="removeIpAddress(i)">del</button>
+                                </div>
+                            </div>
+
+                      </div>
+
+                      <div class="col-md-1 add-ip-cls">
+                          <button class="btn" (click)="addIpAddress()">Add</button>
+                      </div>
+
                 </div>
-              </div>
             </form>
         </div>
+
+        <div class="col-md-7">
+          {{configForm.get('ipList').dirty}}
+            <button class="btn btn-sm btn-primary"
+                    (click)="saveIpAddress()"
+                    [disabled]="!canSave()">Save</button>
+        </div>
+
     </div>
 
-
-</div>
-
-
-<div class="row">
-  <div class="col-md-12">
-
-    {{ this.configForm.value | json }}
-  </div>
 </div>

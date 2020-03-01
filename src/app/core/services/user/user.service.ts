@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {UserTypeModel} from '../../../models/user-type.model';
+import {LocalStorageKeys} from '../../app-constants';
+import {IpConfigurationModel} from '../../../models/ip-configuration.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +26,12 @@ export class UserService {
         if (userTypeObject !== undefined) {
           return userTypeObject;
         }
+    }
+
+    saveIpAddresses(data: IpConfigurationModel[]): void {
+
+        const ipList: IpConfigurationModel[] = data.filter(item => item.ipValue !== '');
+        const ipListString: string = JSON.stringify(ipList);
+        localStorage.setItem(LocalStorageKeys.IP_ADDRESSES, ipListString);
     }
 }

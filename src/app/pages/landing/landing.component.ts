@@ -17,6 +17,7 @@ export class LandingComponent implements OnInit {
     ngOnInit() {
         // Remove if there is an
         localStorage.removeItem(LocalStorageKeys.USER_TYPE);
+        localStorage.removeItem(LocalStorageKeys.IP_ADDRESSES);
     }
 
     submit() {
