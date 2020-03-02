@@ -20,17 +20,17 @@
                                     <span [hidden]="item.valid" class="error-msg">please enter valid address eg: 255.255.255.255</span>
                                   </div>
                                 </div>
-                                <div class="col-md-3 py-2">
-                                  <button class="btn btn-sm btn-danger" (click)="removeIpAddress(i)">
-                                    <i class="material-icons">
+                                <div class="col-md-2 py-2">
+                                  <button class="btn btn-sm" (click)="removeIpAddress(i)">
+                                    <i class="ip-web-icon material-icons">
                                       remove
                                     </i>
                                   </button>
                                 </div>
 
-                                <div class="col-md-1 add-ip-cls py-2" [hidden]="!(i === ipList.length - 1)">
-                                    <button class="btn btn-sm btn-primary" (click)="addIpAddress()">
-                                        <i class="material-icons">
+                                <div class="col-md-2 add-ip-cls py-2" [hidden]="!(i === ipList.length - 1)">
+                                    <button class="btn btn-sm" (click)="addIpAddress()">
+                                        <i class="ip-web-icon material-icons">
                                           add
                                         </i>
                                     </button>

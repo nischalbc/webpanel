@@ -5,3 +5,9 @@ ip-configuration .error-msg {
       color: red;
 }
 
+ip-configuration  .ip-web-icon {
+    font-size: 2rem;
+    color: #2e9746;
+}
+
+
