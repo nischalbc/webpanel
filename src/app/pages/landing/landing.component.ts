@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class LandingComponent implements OnInit {
 
-    private showError = false;
+    showError = false;
     constructor(
         private router: Router
     ) { }
