@@ -42,6 +42,7 @@ export class IpConfigurationComponent implements OnInit {
                   self.ipValueFormGroup()
             ])
         });
+        this.originalData.push(this.configForm.get('ipList').value);
     }
 
     ipValueFormGroup(value = null): FormGroup {
@@ -88,6 +89,9 @@ export class IpConfigurationComponent implements OnInit {
     }
 
     canSave(): boolean {
+        console.log(this.originalData.length, this.configForm.get('ipList').value.length);
+        console.log('Dir', this.configForm.get('ipList').dirty);
+        console.log('valid', this.configForm.get('ipList').valid);
         return ((this.originalData.length !== this.configForm.get('ipList').value.length
           || this.configForm.get('ipList').dirty)
           && this.configForm.get('ipList').valid);
