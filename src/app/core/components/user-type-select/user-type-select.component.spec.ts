@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserTypeSelectComponent } from './user-type-select.component';
+import {FormGroup} from '@angular/forms';
 
 describe('UserTypeSelectComponent', () => {
   let component: UserTypeSelectComponent;
