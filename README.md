@@ -10,6 +10,9 @@ A Simple Angular 8 application with User Type selection screen and Configure IP 
 - Go to the cloned project directory and use `npm install` command
 - And then run this command `ng serve` in same directory.
  
+## Demo Link
+https://ipconfigwebpanel.herokuapp.com/ 
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
