@@ -4,6 +4,10 @@
 
             <form [formGroup]="configForm">
                 <div class="row" formArrayName="ipList">
+                      <div class="col-md-12">
+                        <label>Add/Remove IP Addresses</label>
+                      </div>
+
                       <div class="col-md-7"
                            *ngFor="let item of ipList.controls; let i=index" [formGroupName]="i">
 
