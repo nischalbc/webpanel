@@ -23,17 +23,26 @@
                                     </i>
                                   </button>
                                 </div>
+
+                                <div class="col-md-1 add-ip-cls py-2" [hidden]="!(i === ipList.length - 1)">
+                                    <button class="btn btn-sm btn-primary" (click)="addIpAddress()">
+                                        <i class="material-icons">
+                                          add
+                                        </i>
+                                    </button>
+                                </div>
+
                             </div>
 
                       </div>
 
-                      <div class="col-md-1 add-ip-cls py-2">
-                          <button class="btn btn-sm btn-primary" (click)="addIpAddress()">
-                            <i class="material-icons">
-                              add
-                            </i>
-                          </button>
-                      </div>
+<!--                      <div class="col-md-1 add-ip-cls py-2">-->
+<!--                          <button class="btn btn-sm btn-primary" (click)="addIpAddress()">-->
+<!--                            <i class="material-icons">-->
+<!--                              add-->
+<!--                            </i>-->
+<!--                          </button>-->
+<!--                      </div>-->
 
                 </div>
             </form>
