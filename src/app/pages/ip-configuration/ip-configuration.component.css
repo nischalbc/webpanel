@@ -6,8 +6,14 @@ ip-configuration .error-msg {
 }
 
 ip-configuration  .ip-web-icon {
-    font-size: 2rem;
-    color: #2e9746;
+    font-size: 1.8rem;
+    color: #00b5ae;
+    font-weight: bold;
+}
+
+ip-configuration .wp-save {
+    background: #00b5ae;
+    color: white;
 }
 
 
