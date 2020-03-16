@@ -6,6 +6,7 @@ import {IpConfigurationModel} from '../../models/ip-configuration.model';
 
 const MIN_ITEM = 1;
 const IP_ADDR_PATTERN = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+const IP_LIST_DICT = 'ipList';
 
 @Component({
   selector: 'ip-configuration',
@@ -37,12 +38,22 @@ export class IpConfigurationComponent implements OnInit {
     initializeForm(): void {
         const self = this;
         /* Initiate the form structure */
-        this.configForm = this.fb.group({
-            ipList: this.fb.array([
-                  self.ipValueFormGroup()
-            ])
-        });
-        this.originalData.push(this.configForm.get('ipList').value);
+        this.configForm = this.fb.group(self.initializeIpListControl());
+        this.originalData.push(this.configForm.get(IP_LIST_DICT).value);
+    }
+
+    initializeIpListControl() {
+      const self = this;
+      const control = {};
+      control[IP_LIST_DICT] = this.fb.array([
+        self.ipValueFormGroup()
+      ]);
+      // return {
+      //   ipList: this.fb.array([
+      //     self.ipValueFormGroup()
+      //   ])
+      // };
+      return control;
     }
 
     ipValueFormGroup(value = null): FormGroup {
@@ -51,7 +62,7 @@ export class IpConfigurationComponent implements OnInit {
     }
 
     get ipList(): FormArray {
-        return this.configForm.get('ipList') as FormArray;
+        return this.configForm.get(IP_LIST_DICT) as FormArray;
     }
 
 
@@ -73,7 +84,7 @@ export class IpConfigurationComponent implements OnInit {
           this.ipList.removeAt(index);
         } else {
           this.initializeForm();
-          this.configForm.get('ipList').markAsDirty();
+          this.configForm.get(IP_LIST_DICT).markAsDirty();
         }
     }
 
@@ -82,17 +93,17 @@ export class IpConfigurationComponent implements OnInit {
      */
     saveIpAddress(): void {
         if (this.canSave()) {
-            this.userService.saveIpAddresses(this.configForm.get('ipList').value);
-            this.originalData = this.configForm.get('ipList').value;
-            this.configForm.get('ipList').markAsPristine();
+            this.userService.saveIpAddresses(this.configForm.get(IP_LIST_DICT).value);
+            this.originalData = this.configForm.get(IP_LIST_DICT).value;
+            this.configForm.get(IP_LIST_DICT).markAsPristine();
         }
     }
 
     canSave(): boolean {
 
-        return ((this.originalData.length !== this.configForm.get('ipList').value.length
-          || this.configForm.get('ipList').dirty)
-          && this.configForm.get('ipList').valid);
+        return ((this.originalData.length !== this.configForm.get(IP_LIST_DICT).value.length
+          || this.configForm.get(IP_LIST_DICT).dirty)
+          && this.configForm.get(IP_LIST_DICT).valid);
     }
 
     /**
