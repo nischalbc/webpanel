@@ -8,7 +8,9 @@ A Simple Angular 8 application with User Type selection screen and Configure IP 
 - Install angular cli `npm install -g @angular/cli`
 - Clone this repository in your machine.
 - Go to the cloned project directory and use `npm install` command
+- Build using command `ng build --prod`
 - And then run this command `ng serve` in same directory.
+- Open browser and serve the page using **localhost:8080**
  
 ## Demo Link
 https://ipconfigwebpanel.herokuapp.com/ 
